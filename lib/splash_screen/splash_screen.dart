@@ -1,14 +1,13 @@
 import 'dart:async';
 
-import 'package:app_flutter_challenge/home_screen/home_screen.dart';
+import 'package:app_flutter_challenge/routes/RoutesName.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SplashPage(),
-    );
+    return SafeArea(child: SplashPage());
   }
 }
 
@@ -24,28 +23,63 @@ class SplashInitState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    Timer(Duration(seconds: 2), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    });
+// Timer of 3 seconds to wait load Home Screen
+    Timer(
+      Duration(milliseconds: 2500),
+      () {
+        Navigator.pushReplacementNamed(context, RoutesName.goToHome);
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    //Set Statusbar
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Loading"),
-              CircularProgressIndicator(
-                value: 100,
-                strokeWidth: 2,
-              )
-            ],
-          ),
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                SystemChrome.setEnabledSystemUIOverlays(
+                    [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+              });
+            },
+            child: Container(
+              width: constraints.maxWidth,
+              height: constraints.maxHeight,
+              color: Colors.blueAccent,
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  textDirection: TextDirection.ltr,
+                  children: [
+                    Icon(
+                      Icons.museum_outlined,
+                      size: 90,
+                      color: Colors.white,
+                    ),
+                    Center(
+                      child: Text(
+                        "360 Museum Viewer",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: "Times",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
