@@ -1,6 +1,9 @@
 import 'package:app_flutter_challenge/ui/home_screen/controller/home_controller.dart';
 import 'package:app_flutter_challenge/ui/home_screen/model/image_net.dart';
 import 'package:app_flutter_challenge/ui/home_screen/view/widgets/ImageComponent.dart';
+import 'package:app_flutter_challenge/ui/home_screen/view/widgets/footer.dart';
+import 'package:app_flutter_challenge/ui/home_screen/view/widgets/home_title_widget.dart';
+import 'package:app_flutter_challenge/ui/home_screen/view/widgets/short_menu_home.dart';
 import 'package:app_flutter_challenge/ui/nav_drawer/nav_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,71 +33,9 @@ class HomeState extends State<HomePage> {
             child: Row(
               children: [
                 NavigationDrawer(constraints: constraints),
-                Expanded(
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Center(
-                            child: Text(
-                              "Museum Viewer 360",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Ola",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            itemExtent: constraints.maxHeight * .5,
-                            children: getImagesWidget(images),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(30.0),
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            children: [
-                              Text(
-                                "Developed by Lauro Brizidio",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Divider(
-                                height: 8,
-                              ),
-                              Text(
-                                "Flutter App",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                HomeContent(
+                  images: images,
+                  constraints: constraints,
                 )
               ],
             ),
@@ -105,8 +46,42 @@ class HomeState extends State<HomePage> {
   }
 }
 
+class HomeContent extends StatelessWidget {
+  const HomeContent({
+    Key? key,
+    required this.images,
+    required this.constraints,
+  }) : super(key: key);
+
+  final BoxConstraints constraints;
+
+  final List<ImageNet> images;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        child: Column(
+          children: [
+            HomeTitleWidget(),
+            ShortMenuHome(),
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                itemExtent: constraints.maxHeight * .5,
+                children: getImagesWidget(images),
+              ),
+            ),
+            FooterWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 getImagesWidget(List<ImageNet> images) {
-  List<ImageComponent> widgetImages = [];
+  List<Widget> widgetImages = [];
   images.forEach((image) {
     widgetImages.add(ImageComponent(img: image));
   });

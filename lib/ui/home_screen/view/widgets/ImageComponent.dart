@@ -10,6 +10,20 @@ class ImageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImageWidget(img: img);
+    return Column(children: [
+      Center(
+        child: Text(
+          img.name!,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: "Times",
+          ),
+        ),
+      ),
+      Expanded(
+        child: ImageWidget(img: img),
+      ),
+    ]);
   }
 }
