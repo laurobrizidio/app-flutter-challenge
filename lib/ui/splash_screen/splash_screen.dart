@@ -50,7 +50,7 @@ class SplashInitState extends State<SplashPage> {
             child: Container(
               width: constraints.maxWidth,
               height: constraints.maxHeight,
-              color: Colors.blueAccent,
+              color: Color(0xFF181818),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,

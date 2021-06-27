@@ -1,9 +1,10 @@
-import 'package:app_flutter_challenge/home_screen/model/image_net.dart';
-import 'package:app_flutter_challenge/home_screen/view/home_screen.dart';
-import 'package:app_flutter_challenge/routes/RoutesName.dart';
-import 'package:app_flutter_challenge/splash_screen/splash_screen.dart';
-import 'package:app_flutter_challenge/viewer_screen/viewer_screen.dart';
+import 'package:app_flutter_challenge/ui/home_screen/model/image_net.dart';
+import 'package:app_flutter_challenge/ui/home_screen/view/home_screen.dart';
+import 'package:app_flutter_challenge/ui/splash_screen/splash_screen.dart';
+import 'package:app_flutter_challenge/ui/viewer_screen/viewer_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'RoutesName.dart';
 
 class RoutesGenerator {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
