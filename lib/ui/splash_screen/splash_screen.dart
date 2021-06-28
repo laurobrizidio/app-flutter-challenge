@@ -64,7 +64,7 @@ class SplashInitState extends State<SplashPage> {
                     ),
                     Center(
                       child: Text(
-                        "360 Museum Viewer",
+                        "360 CrowdFunding Viewer",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,

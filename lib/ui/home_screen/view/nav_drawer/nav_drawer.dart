@@ -26,17 +26,23 @@ class NavigationDrawer extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ListTileDrawer(
-                text: "Home",
-                iconData: Icons.home,
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Navigator.pushReplacementNamed(context, RoutesName.goToHome);
                 },
+                child: ListTileDrawer(
+                  text: "Home",
+                  iconData: Icons.home,
+                ),
               ),
-              ListTileDrawer(
-                text: "Logout",
-                iconData: Icons.logout,
-                onPressed: () => SystemNavigator.pop(),
+              GestureDetector(
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+                child: ListTileDrawer(
+                  text: "Logout",
+                  iconData: Icons.logout,
+                ),
               ),
             ],
           ),

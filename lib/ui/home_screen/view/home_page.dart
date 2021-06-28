@@ -1,10 +1,10 @@
 import 'package:app_flutter_challenge/ui/home_screen/controller/home_controller.dart';
 import 'package:app_flutter_challenge/ui/home_screen/model/image_net.dart';
+import 'package:app_flutter_challenge/ui/home_screen/view/nav_drawer/nav_drawer.dart';
 import 'package:app_flutter_challenge/ui/home_screen/view/widgets/ImageComponent.dart';
 import 'package:app_flutter_challenge/ui/home_screen/view/widgets/footer.dart';
 import 'package:app_flutter_challenge/ui/home_screen/view/widgets/home_title_widget.dart';
 import 'package:app_flutter_challenge/ui/home_screen/view/widgets/short_menu_home.dart';
-import 'package:app_flutter_challenge/ui/nav_drawer/nav_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -1,5 +1,6 @@
-import 'package:app_flutter_challenge/routes/RoutesName.dart';
 import 'package:app_flutter_challenge/ui/home_screen/model/image_net.dart';
+import 'package:app_flutter_challenge/ui/viewer_screen/widgets/viewer_dialog.dart';
+import 'package:app_flutter_challenge/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:panorama/panorama.dart';
 
@@ -19,6 +20,9 @@ class ViewerState extends State<Viewer> {
 
   @override
   Widget build(BuildContext context) {
+    final AlertDialog alert = ViewerDialog(
+      img: imageNet,
+    );
     return Scaffold(
       body: Center(
         child: Panorama(
@@ -30,23 +34,29 @@ class ViewerState extends State<Viewer> {
             Hotspot(
               latitude: imageNet.latitude,
               longitude: imageNet.longitude,
+              width: 120,
+              height: 60,
               widget: Container(
-                padding: EdgeInsets.all(10),
-                width: 120,
-                height: 50,
                 child: GestureDetector(
-                  onTap: () => Navigator.pushReplacementNamed(
-                    context,
-                    RoutesName.goToSplash,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        "MENU",
-                        softWrap: false,
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return alert;
+                      },
+                    );
+                  },
+                  child: Card(
+                    color: ColorsApp.colorDarkBlueTransparent,
+                    elevation: 20,
+                    child: Center(
+                      child: Text(
+                        "Menu",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),

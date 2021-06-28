@@ -1,3 +1,4 @@
+import 'package:app_flutter_challenge/utils/AppConfig.dart';
 import 'package:flutter/material.dart';
 
 class HomeTitleWidget extends StatelessWidget {
@@ -13,15 +14,14 @@ class HomeTitleWidget extends StatelessWidget {
       color: Colors.transparent,
       clipBehavior: Clip.hardEdge,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 20,
+        ),
         child: Center(
           child: Text(
-            "Museum Viewer 360",
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: "Serif",
-              fontSize: 24,
-            ),
+            AppConfig.title,
+            style: AppConfig.styleApp,
           ),
         ),
       ),
