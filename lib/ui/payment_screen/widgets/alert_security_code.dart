@@ -9,11 +9,13 @@ class AlertSecurityCode extends AlertDialog {
   final TextEditingController securityDigitCardController;
   final CardInfo cardInfo;
   final String value;
+  final BuildContext contextScreen;
 
   AlertSecurityCode({
     required this.securityDigitCardController,
     required this.value,
     required this.cardInfo,
+    required this.contextScreen,
   });
 
   @override
@@ -71,6 +73,13 @@ class AlertSecurityCode extends AlertDialog {
                     return AlertSucess();
                   },
                 );
+
+                Timer(Duration(seconds: 1), () {
+                  Navigator.pushReplacementNamed(
+                    contextScreen,
+                    RoutesName.goToHome,
+                  );
+                });
               },
             );
           },

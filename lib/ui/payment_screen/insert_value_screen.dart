@@ -88,6 +88,7 @@ class InsertValueState extends State<InsertValueScreen> {
                       securityDigitCardController: securityDigitCardController,
                       value: value.text,
                       cardInfo: cardInfo,
+                      contextScreen: context,
                     );
 
                     showDialog(context: context, builder: (context) => alert);
