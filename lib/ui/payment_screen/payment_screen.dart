@@ -2,6 +2,7 @@ import 'package:app_flutter_challenge/routes/RoutesName.dart';
 import 'package:app_flutter_challenge/ui/home_screen/model/image_net.dart';
 import 'package:app_flutter_challenge/ui/payment_screen/models/card_info.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card_brazilian/flutter_credit_card.dart';
 
 class PaymentPage extends StatefulWidget {
   final ImageNet image;
@@ -106,6 +107,8 @@ class StatePayment extends State<PaymentPage> {
         labelText: "Numero do Cartão",
       ),
       maxLines: 1,
+      maxLength: 16,
+      obscureText: false,
       controller: cardNumberController,
       keyboardType: TextInputType.number,
     );
@@ -130,26 +133,27 @@ class StatePayment extends State<PaymentPage> {
       height: 2 * constraints.maxHeight * 0.4 > 200
           ? 200
           : constraints.maxWidth * 0.4,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        elevation: 26,
-        color: Colors.blueAccent,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            buildTextInCard(
-                text: "Nome do Titular do Cartão",
-                controller: cardOwnerController),
-            buildTextInCard(
-                text: "Numero do Cartão", controller: cardNumberController),
-            buildTextInCard(
-                text: "Data de Validade", controller: cardDateNumberController),
-          ],
-        ),
-      ),
+          child: CreditCardWidget(cardHolderName: cardOwnerController.text,showBackView: false,cvvCode: "",expiryDate: cardDateNumberController.text,cardNumber: cardNumberController.text,),
+      // child: Card(
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(20),
+      //   ),
+      //   elevation: 26,
+      //   color: Colors.blueAccent,
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.stretch,
+      //     mainAxisAlignment: MainAxisAlignment.end,
+      //     children: [
+      //       buildTextInCard(
+      //           text: "Nome do Titular do Cartão",
+      //           controller: cardOwnerController),
+      //       buildTextInCard(
+      //           text: "Numero do Cartão", controller: cardNumberController),
+      //       buildTextInCard(
+      //           text: "Data de Validade", controller: cardDateNumberController),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

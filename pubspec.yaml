@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   panorama: ^0.4.1
+  flutter_credit_card_brazilian: 2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
