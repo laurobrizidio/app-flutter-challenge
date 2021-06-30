@@ -125,35 +125,13 @@ class StatePayment extends State<PaymentPage> {
     );
   }
 
-  Container buildCreditCard(BoxConstraints constraints) {
-    return Container(
-      width: constraints.maxWidth > 500
-          ? constraints.maxWidth * 0.7
-          : constraints.maxWidth,
-      height: 2 * constraints.maxHeight * 0.4 > 200
-          ? 200
-          : constraints.maxWidth * 0.4,
-          child: CreditCardWidget(cardHolderName: cardOwnerController.text,showBackView: false,cvvCode: "",expiryDate: cardDateNumberController.text,cardNumber: cardNumberController.text,),
-      // child: Card(
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.circular(20),
-      //   ),
-      //   elevation: 26,
-      //   color: Colors.blueAccent,
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.stretch,
-      //     mainAxisAlignment: MainAxisAlignment.end,
-      //     children: [
-      //       buildTextInCard(
-      //           text: "Nome do Titular do Cartão",
-      //           controller: cardOwnerController),
-      //       buildTextInCard(
-      //           text: "Numero do Cartão", controller: cardNumberController),
-      //       buildTextInCard(
-      //           text: "Data de Validade", controller: cardDateNumberController),
-      //     ],
-      //   ),
-      // ),
+  CreditCardWidget buildCreditCard(BoxConstraints constraints) {
+    return CreditCardWidget(
+      cardHolderName: cardOwnerController.text,
+      showBackView: false,
+      cvvCode: "",
+      expiryDate: cardDateNumberController.text,
+      cardNumber: cardNumberController.text,
     );
   }
 }
